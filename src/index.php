@@ -2,6 +2,76 @@
 session_start(); 
 
 include 'config.php';
+// WHEN I CLICK ON ADD TO CART
+if($_SERVER['REQUEST_METHOD']=="POST")
+{
+ $d=0;
+//  if cookies are not empty
+ if(!empty($_COOKIE['cartItem']) && is_array($_COOKIE['cartItem']))
+ {
+  
+    foreach($_COOKIE['cartItem'] as $name=>$value)
+    {
+        $d=$d+1;
+    }
+    $d=$d+1;
+ }
+ else{
+    $d=$d+1;
+ }
+ $id=$_POST['hidden-id'];
+ $query="SELECT * FROM products WHERE id=$id";
+ $res=$conn->query($query);
+ if($res->num_rows >0)
+ {
+    while($row = $res->fetch_assoc())
+    {
+        $item_id=$row['id'];
+        $name=$row['name'];
+        $image=$row['image'];
+        $price=$row['sale_price'];
+        $qty=1; 
+        $total_price=$price*$qty;
+    }
+    // if i have cookies
+    if(!empty($_COOKIE['cartItem']) && is_array($_COOKIE['cartItem']))
+    {
+        foreach($_COOKIE['cartItem'] as $name1=>$value)
+        {
+            $mycookie= explode("__",$value);
+            $found=0;
+            if($image== $mycookie[0])
+            {
+                $found=$found+1;
+                $qty1=$mycookie[3]+1;
+                $total_price=$mycookie[2]*$qty1;
+                
+                setcookie("cartItem[$name1]",$image."__".$name."__".$price."__".$qty1."__".$total_price."__".$item_id,time()+1800);
+
+            }
+        }
+        // if my cart is not empty and want to set cookie for newly clicked item
+        if($found==0)
+        {
+            setcookie("cartItem[$d]",$image."__".$name."__".$price."__".$qty."__".$total_price."__".$item_id,time()+1800);
+        }
+    }
+    // if i dont have cookies
+    else{
+        setcookie("cartItem[$d]",$image."__".$name."__".$price."__".$qty."__".$total_price."__".$item_id,time()+1800);
+    }
+ }
+ header("Refresh:0");
+ 
+}
+// counting total items in cart
+if(!empty($_COOKIE['cartItem']))
+{
+    $total_cartItems=count($_COOKIE['cartItem']);
+}
+
+
+
 ?>
 
 <!doctype html>
@@ -56,11 +126,19 @@ include 'config.php';
                         <div class="navbar-nav ml-auto py-0 d-none d-lg-block">
                             <a href="" class="btn px-0">
                                 <i class="fas fa-heart text-primary"></i>
-                                <span class="badge text-secondary border border-secondary rounded-circle" style="padding-bottom: 2px;">0</span>
+                                <span class="badge text-secondary border border-secondary rounded-circle" style="padding-bottom: 2px;">
+                                   0
+                                </span>
                             </a>
-                            <a href="" class="btn px-0 ml-3">
+                            <a href="cart.php" class="btn px-0 ml-3">
                                 <i class="fas fa-shopping-cart text-primary"></i>
-                                <span class="badge text-secondary border border-secondary rounded-circle" style="padding-bottom: 2px;">0</span>
+                                <span class="badge text-secondary border border-secondary rounded-circle" style="padding-bottom: 2px;">
+                                <?php if(!empty($total_cartItems))
+                                       {echo $total_cartItems;}
+                                      else
+                                       {echo "0";}; 
+                                       ?>
+                               </span>
                             </a>
                             <?php if($_SESSION['isloggedIn']=="true")
                             {
@@ -205,8 +283,9 @@ include 'config.php';
                 <div class="product-item bg-light mb-4">
                     <div class="product-img position-relative overflow-hidden">
                         <img class="img-fluid w-100" src="<?php echo $image?>" alt="image">
-                        <div class="product-action">
-                            <a class="btn btn-outline-dark btn-square" href=""><i class="fa fa-shopping-cart"></i></a>
+                        <div class="product-action"> 
+                              <a class="btn btn-outline-dark btn-square" href=""><i class="fa fa-shopping-cart"></i>
+                            </a>
                             <a class="btn btn-outline-dark btn-square" href=""><i class="far fa-heart"></i></a>
                         </div>
                     </div>
@@ -223,6 +302,11 @@ include 'config.php';
                             <small class="fa fa-star text-primary mr-1"></small>
                             <small>(99)</small>
                         </div>
+                        <form action="" method="post">
+                            <input type="hidden" name="hidden-id" value="<?php echo $id?>">
+                        <button class="btn "><i class="fas fa-shopping-cart text-primary"></i> Add to cart</button>
+                        </form>
+                      
                     </div>
                 </div>
             </div>
