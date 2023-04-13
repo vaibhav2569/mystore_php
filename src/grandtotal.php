@@ -23,13 +23,13 @@ if($res->num_rows >0)
     }
     if(!empty($_COOKIE['cartItem']) && is_array($_COOKIE['cartItem']))
     {
-        foreach($_COOKIE['cartItem'] as $name=>$value)
+        foreach($_COOKIE['cartItem'] as $name1=>$value)
         {
             $mycookie=explode("__", $value);
             $found1=0;
             if($id== $mycookie[5])
             {
-                setcookie("cartItem[$name]",$image."__".$name."__".$price."__".$_POST['pqty']."__".$_POST['total']."__".$id."__".$_POST['grandTotal'],time()+1800);
+                setcookie("cartItem[$name1]",$image."__".$name."__".$price."__".$_POST['pqty']."__".$_POST['total']."__".$id."__".$_POST['grandTotal'],time()+1800);
             }
         }
     }

@@ -172,12 +172,12 @@ include 'config.php';
             $_SESSION['pay_amount']=$g_total;
             if($g_total==0)
             {?>
-              <input type="hidden" value="<?php $g_total?>" id="grandtotal">
+              <input type="hidden" value="<?php echo $g_total?>" id="grandtotal">
               <?php }
               else {  ?>
                 <div class="float-right">
                     <span class="text-success">Total amount : $</span>
-                    <input type="text" value="<?php $g_total?>" id="grandtotal" class="p-2 bg-dark text-white border-0 rounded shadow mb-5" name="total" disabled style="margin-right: 120px;">
+                    <input type="text" value="<?php echo $g_total?>" id="grandtotal" class="p-2 bg-dark text-white border-0 rounded shadow mb-5" name="total" disabled style="margin-right: 120px;">
                     
                 </div>
                 <a href="checkout.php" class="btn btn-sm btn-info mt-2 " style="margin-left: 120px;">Checkout</a>

@@ -46,19 +46,19 @@ if($_SERVER['REQUEST_METHOD']=="POST")
                 $qty1=$mycookie[3]+1;
                 $total_price=$mycookie[2]*$qty1;
                 
-                setcookie("cartItem[$name1]",$image."__".$name."__".$price."__".$qty1."__".$total_price."__".$item_id,time()+1800);
+                setcookie("cartItem[$name1]",$image."__".$name."__".$price."__".$qty1."__".$total_price."__".$item_id."__".$total_price,time()+1800);
 
             }
         }
         // if my cart is not empty and want to set cookie for newly clicked item
         if($found==0)
         {
-            setcookie("cartItem[$d]",$image."__".$name."__".$price."__".$qty."__".$total_price."__".$item_id,time()+1800);
+            setcookie("cartItem[$d]",$image."__".$name."__".$price."__".$qty."__".$total_price."__".$item_id."__".$total_price,time()+1800);
         }
     }
     // if i dont have cookies
     else{
-        setcookie("cartItem[$d]",$image."__".$name."__".$price."__".$qty."__".$total_price."__".$item_id,time()+1800);
+        setcookie("cartItem[$d]",$image."__".$name."__".$price."__".$qty."__".$total_price."__".$item_id."__".$total_price,time()+1800);
     }
  }
  header("Refresh:0");
