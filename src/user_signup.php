@@ -42,7 +42,7 @@ if($_SERVER['REQUEST_METHOD']=="POST")
         $username=$_POST['username'];
         $password=$_POST['password'];
         $email=$_POST['email'];
-        $query="INSERT INTO users (username,password,email) VALUES ('$username','$password','$email')";
+        $query="INSERT INTO users (username,password,email,status) VALUES ('$username','$password','$email','pending')";
         $conn->query($query);
         $_SESSION['user']=$email;
         header("location:user_login.php");

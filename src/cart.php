@@ -2,7 +2,16 @@
 session_start(); 
 
 include 'config.php';
-
+$del_cookie="";
+if (!empty($_COOKIE['cartItem']) && is_array($_COOKIE['cartItem'])) {
+    foreach ($_COOKIE['cartItem'] as $name1 => $value) {
+        if(isset($_POST["delete$name1"]))
+        {
+            $del_cookie .= setcookie("cartItem[$name1]","",time()-1800);
+            header("Refresh:0");
+        }
+    }
+}
 
 ?>
 <!doctype html>
@@ -131,6 +140,7 @@ include 'config.php';
                     $mycookie=explode("__",$value);
                     $_SESSION['p_id']=$mycookie[5];
                 
+                
                 ?>
                 <form  method="post">
                     <tr>
@@ -223,7 +233,7 @@ include 'config.php';
                         grandTotal:amount_pay
                     },
                     success:function(res){
-                        console.log(res);
+                      console.log(res);
                       
                     }
                 });

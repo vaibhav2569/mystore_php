@@ -143,7 +143,7 @@ if(!empty($_COOKIE['cartItem']))
                             <?php if($_SESSION['isloggedIn']=="true")
                             {
                             ?>
-                            <a href="user_login.php" class="btn px-0 ml-3 logout">
+                            <a href="user_signup.php" class="btn px-0 ml-3 logout">
                                 <i class="fas fa-user-alt text-primary ">Logout</i>
                                 
                             </a>

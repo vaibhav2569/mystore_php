@@ -2,6 +2,7 @@
 session_start();
 include "config.php";
 // checking if user is registered or not
+
 if($_SESSION['user']=="")
 {
     header("location:user_signup.php");
