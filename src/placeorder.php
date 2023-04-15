@@ -1,3 +1,4 @@
+<!-- inserting order in orders table -->
 <?php
 session_start();
 include 'config.php';

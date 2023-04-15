@@ -1,4 +1,5 @@
 <?php
+// ADMIN INSERT PRODUCT INTO PRODUCTS TABLE 
 session_start();
 
 if($_SESSION['admin']=="")
@@ -17,6 +18,7 @@ $pcategory=$_POST['p_category'];
 $uploadfile=$_FILES['image']['name'];
 $tmpname=$_FILES['image']['tmp_name'];
 $folder="img/$uploadfile";
+// DYNAMIC FILE UPLOAD IN IMG FOLDER
 move_uploaded_file($tmpname,$folder);
 
 if($pname!="" && $pquantity!="" && $psell!="" && $plist!="" && $pcategory!="" && $folder!="")
@@ -80,6 +82,11 @@ if(isset($_GET['action']) && $_GET['action']=='logout')
                         <div class="navbar-nav mr-auto py-0">
                             <a href="index.php" class="nav-item nav-link active">Home</a>                           
                             <a href="admin_dashboard.php" class="nav-item nav-link">Dashboard</a>
+                            <a href="admin_seeUsers.php" class="nav-item nav-link">View Users</a>
+                            <a href="admin_seeOrders.php" class="nav-item nav-link">View Orders</a>
+                            <a href="top5products.php" class="nav-item nav-link">Top products</a>
+                            <a href="top5users.php" class="nav-item nav-link">Top users</a>
+                            <a href="top5orders.php" class="nav-item nav-link">Top orders</a>
                         </div>
                         <div class="navbar-nav ml-auto py-0 d-none d-lg-block">
                          

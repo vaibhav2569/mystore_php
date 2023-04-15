@@ -7,7 +7,7 @@ $confirm_password="";
 $message="";
 $email="";
 
-
+// user registration 
 if($_SERVER['REQUEST_METHOD']=="POST")
 {
 
@@ -53,11 +53,7 @@ if($_SERVER['REQUEST_METHOD']=="POST")
 
 }
 
-
 ?>
-
-
-
 
 <!doctype html>
 <html lang="en">

@@ -1,7 +1,7 @@
 <?php
 session_start();
 include 'config.php';
-
+// updating cookie item with grand total 
 if (empty($_SESSION['p_id'])) {
     header("location:error.php");
 }
@@ -25,8 +25,7 @@ if (!empty($_POST['pid']) && !empty($_POST['pprice']) && !empty($_POST['pqty']) 
 
                 $mycookie = explode("__", $value);
                 $found1 = 0;
-                //    print_r($_COOKIE['cartItem']);die;
-
+              
                 if ($id == $mycookie[5]) {
                     $updatedqt= $_POST['pqty'];
                     setcookie("cartItem[$name1]", $image . "__" . $name . "__" . $price . "__" . $updatedqt . "__" . $_POST['total'] . "__" . $id . "__" . $_POST['grandTotal'], time() + 1800);

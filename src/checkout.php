@@ -1,6 +1,7 @@
 <?php
 session_start();
 include "config.php";
+// WITHOUT LOGIN U CAN'T ORDER
 if ($_SESSION['isloggedIn'] == "false" || empty($_SESSION['isloggedIn'])) {
     header("location:user_signup.php");
 }
@@ -194,6 +195,7 @@ if ($_SESSION['isloggedIn'] == "false" || empty($_SESSION['isloggedIn'])) {
                        pin:pincode
                     },
                     success:function(res){
+                     
                       $(".orderplaced").css("display","block");
                       $(".orderplaced").fadeOut(5000);
                     }

@@ -124,12 +124,7 @@ if(!empty($_COOKIE['cartItem']))
                             <a href="contact.php" class="nav-item nav-link">Contact</a>
                         </div>
                         <div class="navbar-nav ml-auto py-0 d-none d-lg-block">
-                            <a href="" class="btn px-0">
-                                <i class="fas fa-heart text-primary"></i>
-                                <span class="badge text-secondary border border-secondary rounded-circle" style="padding-bottom: 2px;">
-                                   0
-                                </span>
-                            </a>
+                          
                             <a href="cart.php" class="btn px-0 ml-3">
                                 <i class="fas fa-shopping-cart text-primary"></i>
                                 <span class="badge text-secondary border border-secondary rounded-circle" style="padding-bottom: 2px;">
@@ -284,9 +279,7 @@ if(!empty($_COOKIE['cartItem']))
                     <div class="product-img position-relative overflow-hidden">
                         <img class="img-fluid w-100" src="<?php echo $image?>" alt="image">
                         <div class="product-action"> 
-                              <a class="btn btn-outline-dark btn-square" href=""><i class="fa fa-shopping-cart"></i>
-                            </a>
-                            <a class="btn btn-outline-dark btn-square" href=""><i class="far fa-heart"></i></a>
+                            
                         </div>
                     </div>
                     <div class="text-center py-4">
@@ -306,6 +299,7 @@ if(!empty($_COOKIE['cartItem']))
                             <input type="hidden" name="hidden-id" value="<?php echo $id?>">
                         <button class="btn "><i class="fas fa-shopping-cart text-primary"></i> Add to cart</button>
                         </form>
+                     
                       
                     </div>
                 </div>
@@ -319,6 +313,7 @@ if(!empty($_COOKIE['cartItem']))
 </div>
 
    <!-- Product end -->
+   <?php include "footer.php"; ?>
             <!-- my included js-->
          <script src="user_handler.js"></script>
 

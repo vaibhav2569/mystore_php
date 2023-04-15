@@ -1,6 +1,6 @@
 <?php
 session_start(); 
-
+// ON PLACING ORDER REMOVE CART FROM COOKIE
 include 'config.php';
 $del_cookie="";
 if (!empty($_COOKIE['cartItem']) && is_array($_COOKIE['cartItem'])) {

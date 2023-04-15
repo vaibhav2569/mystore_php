@@ -7,7 +7,7 @@ if ($_SERVER['REQUEST_METHOD'] == "GET" && $_GET['action'] == 'delete' && isset(
     $query1 = "DELETE FROM orders WHERE o_id=$del_id";
     
     $conn->query($query1);
-   
+   $_SESSION['user']="";
     
   
     header("location:admin_seeOrders.php");
@@ -87,6 +87,11 @@ if (isset($_POST['submit']) && isset($_POST['oid'])) {
                         <div class="navbar-nav mr-auto py-0">
                             <a href="index.php" class="nav-item nav-link active">Home</a>                           
                             <a href="admin_dashboard.php" class="nav-item nav-link">Dashboard</a>
+                            <a href="admin_seeUsers.php" class="nav-item nav-link">View Users</a>
+                            <a href="admin_seeOrders.php" class="nav-item nav-link">View Orders</a>
+                            <a href="top5products.php" class="nav-item nav-link">Top products</a>
+                            <a href="top5users.php" class="nav-item nav-link">Top users</a>
+                            <a href="top5orders.php" class="nav-item nav-link">Top orders</a>
                         </div>
                         <div class="navbar-nav ml-auto py-0 d-none d-lg-block">
                          

@@ -41,7 +41,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 }
 
 ?>
-<!doctype html>
+ <!doctype html>
 <html lang="en">
 
 <head>
@@ -82,6 +82,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
             </div>
             <button type="submit" class="btn btn-primary">Login</button>
         </form>
+        <h6>Not a user ?</h6><a href="user_signup.php">Register</a>
     </div>
 
     <!-- Optional JavaScript -->

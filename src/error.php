@@ -1,4 +1,4 @@
 <?php
-
-echo "hii error how r u?";
+// error page
+echo "Oops something went wrong !!!";
 ?>

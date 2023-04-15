@@ -1,4 +1,5 @@
 <?php
+// ADMIN CANNOT INSERT WITHOUT LOGIN
 session_start();
 require_once 'config.php';
 $name = "";
@@ -29,19 +30,6 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 }
 
 ?>
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 <!doctype html>

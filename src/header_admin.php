@@ -41,6 +41,8 @@
                         <div class="navbar-nav mr-auto py-0">
                             <a href="index.php" class="nav-item nav-link active">Home</a>                           
                             <a href="admin_dashboard.php" class="nav-item nav-link">Dashboard</a>
+                            <a href="admin_seeUsers.php" class="nav-item nav-link">View Users</a>
+                            <a href="admin_seeOrders.php" class="nav-item nav-link">View Orders</a>
                         </div>
                         <div class="navbar-nav ml-auto py-0 d-none d-lg-block">
                          

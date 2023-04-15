@@ -1,4 +1,5 @@
 <?php
+// product description page
 include_once 'header.php';
 include 'config.php';
 $id=$_GET['id'];
